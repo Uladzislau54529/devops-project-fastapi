@@ -1,5 +1,6 @@
 Flask
 pytest
+sqlalchemy
 psycopg2-binary
 Werkzeug==2.3.8
 fastapi
