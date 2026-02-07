@@ -1,0 +1,6 @@
+Flask
+pytest
+psycopg2-binary
+Werkzeug==2.3.8
+fastapi
+uvicorn
