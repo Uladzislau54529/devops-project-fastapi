@@ -30,4 +30,3 @@ def db_check():
         return {"database": "connected"}
     except Exception as e:
         return {"database": "error", "details": str(e)}
-}
