@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Basic check
-        run: echo "CI check passed"
+        run: echo "PR checks passed"
 
   docker:
     needs: check
