@@ -2,21 +2,20 @@ from fastapi import FastAPI
 import os
 from sqlalchemy import create_engine, text
 
-# --- Application ---
+
 main = FastAPI(
     title="Project 2 API",
     version="1.0.0"
 )
 
-# --- Database configuration ---
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-engine = create_engine(
-    DATABASE_URL,
-    pool_pre_ping=True
-)
+engine = None
+if DATABASE_URL:
+    engine = create_engine(DATABASE_URL)
 
-# --- Basic endpoints ---
+
+
 @main.get("/")
 def root():
     return {"message": "Project 2 is running"}
@@ -25,7 +24,7 @@ def root():
 def health():
     return {"status": "ok"}
 
-# --- Database check endpoint ---
+
 @main.get("/db-check")
 def db_check():
     try:
