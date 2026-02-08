@@ -9,7 +9,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.14'
+      - name: Install library
+        run: |
+          pip install -r requirements.txt
+      - name: Run Pytest
+        run: |
+          pytes t
 
       - name: Basic check
         run: echo "PR checks passed"

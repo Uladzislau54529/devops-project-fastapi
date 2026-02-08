@@ -1,8 +1,25 @@
-version: "3.8"
+version: "3.9"
 
 services:
-  app:
+  main:
     build: .
-    container_name: devops_app
     ports:
       - "8000:8000"
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: project2
+      POSTGRES_USER: project2_user
+      POSTGRES_PASSWORD: project2_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
